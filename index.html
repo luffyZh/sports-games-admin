@@ -73,6 +73,10 @@
       </div>
 
       <nav class="flex-1 p-4 space-y-2">
+          <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all">
+              <i class="fa-solid fa-chart-pie w-6"></i>
+              赛事看板
+          </button>
           <button onclick="switchTab('events')" id="nav-events" class="w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all bg-brand-50 text-brand-600">
               <i class="fa-solid fa-trophy w-6"></i>
               赛事管理
@@ -109,6 +113,328 @@
       <!-- Content Container -->
       <div class="flex-1 overflow-y-auto p-8 scroll-smooth" id="main-scroll">
           
+          <!-- TAB 0: 赛事看板 (Dashboard) -->
+          <div id="view-dashboard" class="hidden space-y-6 animate-fade-in">
+              <div class="flex justify-between items-end mb-2">
+                  <div>
+                      <h1 class="text-2xl font-bold text-slate-800">赛事数据看板</h1>
+                      <p class="text-slate-500 mt-1">2026 春季华东师范健美操大赛 · 实时监控</p>
+                  </div>
+                  <div class="flex gap-2">
+                      <select class="bg-white border border-slate-200 text-slate-600 text-sm rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-brand-500">
+                          <option>全部项目</option>
+                          <option>男子单人操</option>
+                          <option>女子单人操</option>
+                          <option>混合双人操</option>
+                      </select>
+                      <button class="bg-white border border-slate-200 text-slate-600 hover:text-brand-600 px-4 py-2.5 rounded-lg text-sm font-medium shadow-sm transition">
+                          <i class="fa-solid fa-download mr-1"></i> 导出报表
+                      </button>
+                  </div>
+              </div>
+
+              <!-- 1. 核心指标卡片 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <!-- Card 1 -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                          <i class="fa-solid fa-users text-6xl text-brand-600"></i>
+                      </div>
+                      <p class="text-sm text-slate-500 font-medium mb-1">参赛总人数</p>
+                      <h3 class="text-3xl font-bold text-slate-800">248 <span class="text-sm font-normal text-slate-400">人</span></h3>
+                      <div class="flex items-center mt-4 text-xs">
+                          <span class="text-emerald-500 font-bold flex items-center bg-emerald-50 px-2 py-0.5 rounded-full mr-2">
+                              <i class="fa-solid fa-arrow-up mr-1"></i> 12%
+                          </span>
+                          <span class="text-slate-400">较上届增长</span>
+                      </div>
+                  </div>
+                  <!-- Card 2 -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                          <i class="fa-solid fa-eye text-6xl text-blue-600"></i>
+                      </div>
+                      <p class="text-sm text-slate-500 font-medium mb-1">观众入场人数</p>
+                      <h3 class="text-3xl font-bold text-slate-800">1,205 <span class="text-sm font-normal text-slate-400">人</span></h3>
+                      <div class="flex items-center mt-4 text-xs">
+                          <span class="text-emerald-500 font-bold flex items-center bg-emerald-50 px-2 py-0.5 rounded-full mr-2">
+                              <i class="fa-solid fa-arrow-up mr-1"></i> 5.8%
+                          </span>
+                          <span class="text-slate-400">较昨日新增</span>
+                      </div>
+                  </div>
+                  <!-- Card 3 -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                          <i class="fa-solid fa-flag-checkered text-6xl text-amber-600"></i>
+                      </div>
+                      <p class="text-sm text-slate-500 font-medium mb-1">赛事完赛进度</p>
+                      <h3 class="text-3xl font-bold text-slate-800">15 <span class="text-lg text-slate-400">/ 28</span></h3>
+                      <div class="w-full bg-slate-100 rounded-full h-1.5 mt-4 overflow-hidden">
+                          <div class="bg-amber-500 h-1.5 rounded-full" style="width: 53%"></div>
+                      </div>
+                  </div>
+                  <!-- Card 4 -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                      <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                          <i class="fa-solid fa-medal text-6xl text-purple-600"></i>
+                      </div>
+                      <p class="text-sm text-slate-500 font-medium mb-1">产生奖牌数</p>
+                      <h3 class="text-3xl font-bold text-slate-800">45 <span class="text-sm font-normal text-slate-400">枚</span></h3>
+                      <div class="flex gap-2 mt-4">
+                          <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-bold rounded">金 15</span>
+                          <span class="px-2 py-0.5 bg-slate-200 text-slate-600 text-xs font-bold rounded">银 15</span>
+                          <span class="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-bold rounded">铜 15</span>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- 2. 图表区域 -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <!-- Chart 1 (New): 赛事热度趋势 (Line Chart) -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                      <div class="flex justify-between items-center mb-6">
+                          <h3 class="font-bold text-slate-800">赛事热度趋势</h3>
+                          <select class="text-xs border-none bg-slate-50 text-slate-500 rounded p-1 outline-none">
+                              <option>近7天</option>
+                              <option>近24小时</option>
+                          </select>
+                      </div>
+                      <div class="h-64 relative flex items-end justify-between gap-2 px-2 pb-6 pt-10">
+                          <!-- Y-axis Grid Lines -->
+                          <div class="absolute inset-0 top-10 bottom-6 flex flex-col justify-between pointer-events-none">
+                              <div class="w-full h-px bg-slate-50"></div>
+                              <div class="w-full h-px bg-slate-50"></div>
+                              <div class="w-full h-px bg-slate-50"></div>
+                              <div class="w-full h-px bg-slate-50"></div>
+                              <div class="w-full h-px bg-slate-50"></div>
+                          </div>
+                          
+                          <!-- SVG Line Chart -->
+                          <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+                              <!-- Gradient Definition -->
+                              <defs>
+                                  <linearGradient id="lineGradient" x1="0" x2="0" y1="0" y2="1">
+                                      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.2"/>
+                                      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+                                  </linearGradient>
+                              </defs>
+                              <!-- Area -->
+                              <path d="M0,100 L0,70 L16,60 L32,80 L48,50 L64,40 L80,55 L100,30 L100,100 Z" fill="url(#lineGradient)" />
+                              <!-- Line -->
+                              <path d="M0,70 L16,60 L32,80 L48,50 L64,40 L80,55 L100,30" fill="none" stroke="#6366f1" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+
+                          <!-- Data Points (Interactive Hover) -->
+                          <div class="absolute left-[16%] top-[60%] w-2 h-2 bg-white border-2 border-brand-500 rounded-full z-10 hover:scale-150 transition cursor-pointer" title="周二: 1,204人"></div>
+                          <div class="absolute left-[32%] top-[80%] w-2 h-2 bg-white border-2 border-brand-500 rounded-full z-10 hover:scale-150 transition cursor-pointer" title="周三: 980人"></div>
+                          <div class="absolute left-[48%] top-[50%] w-2 h-2 bg-white border-2 border-brand-500 rounded-full z-10 hover:scale-150 transition cursor-pointer" title="周四: 2,100人"></div>
+                          <div class="absolute left-[64%] top-[40%] w-2 h-2 bg-white border-2 border-brand-500 rounded-full z-10 hover:scale-150 transition cursor-pointer" title="周五: 2,500人"></div>
+                          <div class="absolute left-[80%] top-[55%] w-2 h-2 bg-white border-2 border-brand-500 rounded-full z-10 hover:scale-150 transition cursor-pointer" title="周六: 1,800人"></div>
+                          
+                          <!-- X-axis Labels -->
+                          <div class="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-slate-400">
+                              <span>周一</span>
+                              <span>周二</span>
+                              <span>周三</span>
+                              <span>周四</span>
+                              <span>周五</span>
+                              <span>周六</span>
+                              <span>周日</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Chart 2: 参赛项目分布 (Bar Chart) -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                      <div class="flex justify-between items-center mb-6">
+                          <h3 class="font-bold text-slate-800">各项目参赛人数分布</h3>
+                          <button class="text-slate-400 hover:text-brand-600"><i class="fa-solid fa-ellipsis"></i></button>
+                      </div>
+                      <div class="space-y-4">
+                          <!-- Bar Item -->
+                          <div>
+                              <div class="flex justify-between text-sm mb-1">
+                                  <span class="text-slate-600">五人操</span>
+                                  <span class="font-bold text-slate-800">85人</span>
+                              </div>
+                              <div class="w-full bg-slate-50 rounded-full h-3 overflow-hidden">
+                                  <div class="bg-brand-500 h-full rounded-full" style="width: 85%"></div>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="flex justify-between text-sm mb-1">
+                                  <span class="text-slate-600">有氧舞蹈</span>
+                                  <span class="font-bold text-slate-800">64人</span>
+                              </div>
+                              <div class="w-full bg-slate-50 rounded-full h-3 overflow-hidden">
+                                  <div class="bg-blue-500 h-full rounded-full" style="width: 64%"></div>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="flex justify-between text-sm mb-1">
+                                  <span class="text-slate-600">有氧踏板</span>
+                                  <span class="font-bold text-slate-800">42人</span>
+                              </div>
+                              <div class="w-full bg-slate-50 rounded-full h-3 overflow-hidden">
+                                  <div class="bg-emerald-500 h-full rounded-full" style="width: 42%"></div>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="flex justify-between text-sm mb-1">
+                                  <span class="text-slate-600">混合双人操</span>
+                                  <span class="font-bold text-slate-800">32人</span>
+                              </div>
+                              <div class="w-full bg-slate-50 rounded-full h-3 overflow-hidden">
+                                  <div class="bg-amber-500 h-full rounded-full" style="width: 32%"></div>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="flex justify-between text-sm mb-1">
+                                  <span class="text-slate-600">男子单人操</span>
+                                  <span class="font-bold text-slate-800">25人</span>
+                              </div>
+                              <div class="w-full bg-slate-50 rounded-full h-3 overflow-hidden">
+                                  <div class="bg-purple-500 h-full rounded-full" style="width: 25%"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Chart 2: 团体总分排名 -->
+                  <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                      <div class="flex justify-between items-center mb-6">
+                          <h3 class="font-bold text-slate-800">团体总分排名 (Top 5)</h3>
+                          <button class="text-xs text-brand-600 font-medium hover:underline">查看全部</button>
+                      </div>
+                      <div class="space-y-4">
+                          <div class="flex items-center gap-4">
+                              <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-sm">1</div>
+                              <div class="flex-1">
+                                  <p class="font-bold text-slate-800 text-sm">飞跃队</p>
+                                  <p class="text-xs text-slate-400">总分: 98.5</p>
+                              </div>
+                              <i class="fa-solid fa-trophy text-yellow-400"></i>
+                          </div>
+                          <div class="flex items-center gap-4">
+                              <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">2</div>
+                              <div class="flex-1">
+                                  <p class="font-bold text-slate-800 text-sm">先锋体育</p>
+                                  <p class="text-xs text-slate-400">总分: 95.2</p>
+                              </div>
+                          </div>
+                          <div class="flex items-center gap-4">
+                              <div class="w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-sm">3</div>
+                              <div class="flex-1">
+                                  <p class="font-bold text-slate-800 text-sm">活力无限</p>
+                                  <p class="text-xs text-slate-400">总分: 92.8</p>
+                              </div>
+                          </div>
+                          <div class="flex items-center gap-4">
+                              <div class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center font-bold text-sm">4</div>
+                              <div class="flex-1">
+                                  <p class="font-bold text-slate-800 text-sm">雷霆战队</p>
+                                  <p class="text-xs text-slate-400">总分: 88.5</p>
+                              </div>
+                          </div>
+                          <div class="flex items-center gap-4">
+                              <div class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center font-bold text-sm">5</div>
+                              <div class="flex-1">
+                                  <p class="font-bold text-slate-800 text-sm">极光俱乐部</p>
+                                  <p class="text-xs text-slate-400">总分: 86.0</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- 3. 赛事预告 & 最新奖项 -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <!-- 赛事预告 -->
+                  <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                      <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                          <h3 class="font-bold text-slate-800">即将开始</h3>
+                          <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">今天 14:00 后</span>
+                      </div>
+                      <div class="divide-y divide-slate-100">
+                          <div class="p-4 flex items-center gap-4 hover:bg-slate-50 transition">
+                              <div class="bg-brand-50 text-brand-600 px-3 py-2 rounded-lg text-center min-w-[60px]">
+                                  <div class="text-xs font-bold">14:00</div>
+                                  <div class="text-[10px] opacity-75">主馆</div>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">混合双人操 (决赛)</h4>
+                                  <p class="text-xs text-slate-500">飞跃队 vs 先锋体育</p>
+                              </div>
+                              <button class="text-xs border border-brand-200 text-brand-600 px-3 py-1.5 rounded-lg hover:bg-brand-50">详情</button>
+                          </div>
+                          <div class="p-4 flex items-center gap-4 hover:bg-slate-50 transition">
+                              <div class="bg-slate-50 text-slate-600 px-3 py-2 rounded-lg text-center min-w-[60px]">
+                                  <div class="text-xs font-bold">14:45</div>
+                                  <div class="text-[10px] opacity-75">主馆</div>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">三人操 (预赛)</h4>
+                                  <p class="text-xs text-slate-500">小组赛 C组</p>
+                              </div>
+                              <button class="text-xs border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-50">详情</button>
+                          </div>
+                          <div class="p-4 flex items-center gap-4 hover:bg-slate-50 transition">
+                              <div class="bg-slate-50 text-slate-600 px-3 py-2 rounded-lg text-center min-w-[60px]">
+                                  <div class="text-xs font-bold">15:30</div>
+                                  <div class="text-[10px] opacity-75">副馆</div>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">有氧踏板 (资格赛)</h4>
+                                  <p class="text-xs text-slate-500">第二轮</p>
+                              </div>
+                              <button class="text-xs border border-slate-200 text-slate-600 px-3 py-1.5 rounded-lg hover:bg-slate-50">详情</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- 最新获奖 -->
+                  <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                      <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                          <h3 class="font-bold text-slate-800">最新获奖</h3>
+                          <button class="text-brand-600 text-sm hover:underline">查看榜单</button>
+                      </div>
+                      <div class="divide-y divide-slate-100">
+                          <div class="p-4 flex items-center gap-4">
+                              <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                  <i class="fa-solid fa-medal"></i>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">张伟 <span class="text-xs font-normal text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded ml-2">飞跃队</span></h4>
+                                  <p class="text-xs text-slate-500">男子单人操 - 冠军 (18.5分)</p>
+                              </div>
+                              <span class="text-xs text-slate-400">10分钟前</span>
+                          </div>
+                          <div class="p-4 flex items-center gap-4">
+                              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                                  <i class="fa-solid fa-medal"></i>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">李强 <span class="text-xs font-normal text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded ml-2">先锋体育</span></h4>
+                                  <p class="text-xs text-slate-500">男子单人操 - 亚军 (18.2分)</p>
+                              </div>
+                              <span class="text-xs text-slate-400">10分钟前</span>
+                          </div>
+                          <div class="p-4 flex items-center gap-4">
+                              <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+                                  <i class="fa-solid fa-medal"></i>
+                              </div>
+                              <div class="flex-1">
+                                  <h4 class="text-sm font-bold text-slate-800">陈静 / 王军 <span class="text-xs font-normal text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded ml-2">飞跃队</span></h4>
+                                  <p class="text-xs text-slate-500">混合双人操 - 季军 (17.8分)</p>
+                              </div>
+                              <span class="text-xs text-slate-400">25分钟前</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
           <!-- TAB 1: 赛事管理 (Events) -->
           <div id="view-events" class="space-y-6">
               
@@ -679,7 +1005,107 @@
                       <h4 class="font-bold text-slate-700">领队面板 - 状态与导航</h4>
                   </div>
 
-                  <!-- Phone 2: 领队 - 实时战报 -->
+                   <!-- Phone 2: 领队 - 我的队员 -->
+                  <div class="flex flex-col items-center gap-4">
+                      <div class="mobile-shell">
+                          <div class="notch"></div>
+                          <!-- App Header -->
+                          <div class="bg-white h-24 pt-10 px-6 border-b border-slate-100 flex items-center justify-between sticky top-0 z-30">
+                              <button class="text-slate-800"><i class="fa-solid fa-chevron-left"></i></button>
+                              <h3 class="font-bold text-slate-800">我的队员</h3>
+                              <button class="text-brand-600 text-sm font-medium">添加</button>
+                          </div>
+                          
+                          <!-- Team Summary -->
+                          <div class="bg-blue-50 px-6 py-3 flex items-center justify-between">
+                              <span class="text-xs text-blue-800 font-bold">飞跃队 (共12人)</span>
+                              <span class="text-xs text-blue-600 bg-white px-2 py-0.5 rounded-full shadow-sm">资格审核通过</span>
+                          </div>
+
+                          <!-- Member List -->
+                          <div class="overflow-y-auto h-[600px] bg-slate-50 pb-20">
+                              <div class="divide-y divide-slate-100">
+                                  <!-- Member 1 -->
+                                  <div class="bg-white p-4 flex items-center gap-3">
+                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang" class="w-10 h-10 rounded-full bg-slate-100">
+                                      <div class="flex-1 min-w-0">
+                                          <div class="flex justify-between items-center mb-0.5">
+                                              <h4 class="font-bold text-slate-800 text-sm">张伟</h4>
+                                              <span class="text-[10px] px-1.5 py-0.5 bg-emerald-100 text-emerald-600 rounded">已参赛</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">男子单人操 / 混合双人操</p>
+                                      </div>
+                                      <button class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-100 hover:text-slate-600">
+                                          <i class="fa-solid fa-chevron-right text-xs"></i>
+                                      </button>
+                                  </div>
+
+                                  <!-- Member 2 -->
+                                  <div class="bg-white p-4 flex items-center gap-3">
+                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Li" class="w-10 h-10 rounded-full bg-slate-100">
+                                      <div class="flex-1 min-w-0">
+                                          <div class="flex justify-between items-center mb-0.5">
+                                              <h4 class="font-bold text-slate-800 text-sm">李强</h4>
+                                              <span class="text-[10px] px-1.5 py-0.5 bg-emerald-100 text-emerald-600 rounded">已参赛</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">五人操 / 混合双人操</p>
+                                      </div>
+                                      <button class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-100 hover:text-slate-600">
+                                          <i class="fa-solid fa-chevron-right text-xs"></i>
+                                      </button>
+                                  </div>
+
+                                  <!-- Member 3 -->
+                                  <div class="bg-white p-4 flex items-center gap-3">
+                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wang" class="w-10 h-10 rounded-full bg-slate-100">
+                                      <div class="flex-1 min-w-0">
+                                          <div class="flex justify-between items-center mb-0.5">
+                                              <h4 class="font-bold text-slate-800 text-sm">王军</h4>
+                                              <span class="text-[10px] px-1.5 py-0.5 bg-orange-100 text-orange-600 rounded">检录中</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">有氧舞蹈</p>
+                                      </div>
+                                      <button class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-100 hover:text-slate-600">
+                                          <i class="fa-solid fa-chevron-right text-xs"></i>
+                                      </button>
+                                  </div>
+
+                                  <!-- Member 4 -->
+                                  <div class="bg-white p-4 flex items-center gap-3">
+                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chen" class="w-10 h-10 rounded-full bg-slate-100">
+                                      <div class="flex-1 min-w-0">
+                                          <div class="flex justify-between items-center mb-0.5">
+                                              <h4 class="font-bold text-slate-800 text-sm">陈静</h4>
+                                              <span class="text-[10px] px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded">未开始</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">女子单人操</p>
+                                      </div>
+                                      <button class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-100 hover:text-slate-600">
+                                          <i class="fa-solid fa-chevron-right text-xs"></i>
+                                      </button>
+                                  </div>
+
+                                  <!-- Member 5 -->
+                                  <div class="bg-white p-4 flex items-center gap-3">
+                                      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Liu" class="w-10 h-10 rounded-full bg-slate-100">
+                                      <div class="flex-1 min-w-0">
+                                          <div class="flex justify-between items-center mb-0.5">
+                                              <h4 class="font-bold text-slate-800 text-sm">刘洋</h4>
+                                              <span class="text-[10px] px-1.5 py-0.5 bg-red-50 text-red-500 rounded">资料待补</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">五人操</p>
+                                      </div>
+                                      <button class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-100 hover:text-slate-600">
+                                          <i class="fa-solid fa-chevron-right text-xs"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <h4 class="font-bold text-slate-700">领队面板 - 我的队员</h4>
+                  </div>
+
+                  <!-- Phone 3: 领队 - 实时战报 -->
                   <div class="flex flex-col items-center gap-4">
                       <div class="mobile-shell">
                           <div class="notch"></div>
@@ -744,7 +1170,7 @@
                       <h4 class="font-bold text-slate-700">领队面板 - 数据与推送</h4>
                   </div>
 
-                  <!-- Phone 3: 领队 - 成绩详情 -->
+                  <!-- Phone 4: 领队 - 成绩详情 -->
                   <div class="flex flex-col items-center gap-4">
                       <div class="mobile-shell">
                           <div class="notch"></div>
@@ -966,29 +1392,33 @@
       // 1. 基础导航与视图切换逻辑
       // ==========================================
 
-      // Tab 切换逻辑 (赛事管理 vs 小程序面板)
+      // Tab 切换逻辑
       function switchTab(tabId) {
-          // 更新导航样式
-          const navEvents = document.getElementById('nav-events');
-          const navMiniapp = document.getElementById('nav-miniapp');
-          
+          const tabs = ['dashboard', 'events', 'miniapp'];
           const activeClass = 'w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all bg-brand-50 text-brand-600';
           const inactiveClass = 'w-full flex items-center px-4 py-3 text-sm font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-all';
+          
+          const titles = {
+              'dashboard': '赛事数据看板',
+              'events': '赛事列表',
+              'miniapp': '小程序管理'
+          };
 
-          if (tabId === 'events') {
-              navEvents.className = activeClass;
-              navMiniapp.className = inactiveClass;
-              document.getElementById('page-title').innerText = '赛事列表';
-          } else {
-              navEvents.className = inactiveClass;
-              navMiniapp.className = activeClass;
-              document.getElementById('page-title').innerText = '小程序管理';
-          }
-
-          // 切换视图区域
-          document.getElementById('view-events').classList.add('hidden');
-          document.getElementById('view-miniapp').classList.add('hidden');
-          document.getElementById(`view-${tabId}`).classList.remove('hidden');
+          tabs.forEach(id => {
+              const navEl = document.getElementById(`nav-${id}`);
+              const viewEl = document.getElementById(`view-${id}`);
+              
+              if (navEl && viewEl) {
+                  if (id === tabId) {
+                      navEl.className = activeClass;
+                      viewEl.classList.remove('hidden');
+                      document.getElementById('page-title').innerText = titles[id];
+                  } else {
+                      navEl.className = inactiveClass;
+                      viewEl.classList.add('hidden');
+                  }
+              }
+          });
       }
 
       // 进入赛事详情页
@@ -1159,10 +1589,6 @@
               btnGantt.className = activeBtnClass;
           }
       }
-
-      // 初始化：默认显示第一个 Tab
-      // (页面加载时不需要额外操作，HTML 结构已设置好默认状态)
-      
   </script>
 </body>
 </html>
