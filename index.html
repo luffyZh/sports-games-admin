@@ -22,7 +22,85 @@
                 }
             }
         }
-    </script>
+        // ==========================================
+      // 6. 消息推送模拟逻辑
+      // ==========================================
+      
+      function triggerInAppMsg() {
+          const overlay = document.getElementById('msg-card-overlay');
+          const card = document.getElementById('msg-card');
+          
+          overlay.classList.remove('hidden');
+          // Delay to allow display:block to apply before transition
+          setTimeout(() => {
+              overlay.classList.remove('opacity-0');
+              card.classList.remove('scale-90');
+              card.classList.add('scale-100');
+          }, 10);
+      }
+
+      function closeMsgCard() {
+          const overlay = document.getElementById('msg-card-overlay');
+          const card = document.getElementById('msg-card');
+          
+          overlay.classList.add('opacity-0');
+          card.classList.remove('scale-100');
+          card.classList.add('scale-90');
+          
+          setTimeout(() => {
+              overlay.classList.add('hidden');
+          }, 300);
+      }
+
+      function triggerOutOfAppMsg() {
+          const banner = document.getElementById('notification-banner');
+          const badge = document.getElementById('app-badge');
+          const time = document.getElementById('msg-time');
+          const preview = document.getElementById('msg-preview');
+
+          // 1. Show Notification Banner
+          banner.classList.remove('-translate-y-full');
+          
+          // 2. Update List Item
+          setTimeout(() => {
+              badge.classList.remove('scale-0');
+              time.innerText = '刚刚';
+              time.classList.add('text-brand-600');
+              preview.innerText = '[1条] 请让队员张佑才到检录口A就位！';
+              preview.classList.remove('text-slate-400');
+              preview.classList.add('text-slate-900', 'font-medium');
+          }, 500);
+
+          // Auto hide banner after 3 seconds
+          setTimeout(() => {
+              banner.classList.add('-translate-y-full');
+          }, 4000);
+      }
+
+      function openApp() {
+          // Reset simulated state
+          const badge = document.getElementById('app-badge');
+          const time = document.getElementById('msg-time');
+          const preview = document.getElementById('msg-preview');
+          const banner = document.getElementById('notification-banner');
+
+          banner.classList.add('-translate-y-full');
+          badge.classList.add('scale-0');
+          
+          time.innerText = '昨天';
+          time.classList.remove('text-brand-600');
+          preview.innerText = '点击查看最新赛事信息';
+          preview.classList.remove('text-slate-900', 'font-medium');
+          preview.classList.add('text-slate-400');
+          
+          alert('已进入小程序查看详情');
+      }
+
+      function triggerGlobalSimulation() {
+          triggerInAppMsg();
+          triggerOutOfAppMsg();
+      }
+  </script>
     <!-- 图标库 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -1219,13 +1297,148 @@
                       <h4 class="font-bold text-slate-700">领队面板 - 成绩详情</h4>
                   </div>
 
+                  <!-- Phone 5: 领队 - 消息推送[程序内] -->
+                  <div class="flex flex-col items-center gap-4">
+                      <div class="mobile-shell relative overflow-hidden">
+                          <div class="notch"></div>
+                          <div class="bg-white h-16 pt-8 px-4 flex items-center justify-between border-b border-slate-100">
+                              <button class="text-slate-800"><i class="fa-solid fa-chevron-left"></i></button>
+                              <h3 class="font-bold text-slate-800">消息通知</h3>
+                              <button class="text-slate-800"><i class="fa-solid fa-ellipsis"></i></button>
+                          </div>
+                          
+                          <div class="p-4 h-[680px] bg-slate-50 relative">
+                              <div class="flex flex-col items-center justify-center h-full space-y-4">
+                                  <div class="text-slate-400 text-sm">暂无新消息</div>
+                                  <button id="btn-simulate-in-app" onclick="triggerInAppMsg()" class="px-4 py-2 bg-blue-100 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-200 transition">
+                                      点击模拟接收消息
+                                  </button>
+                              </div>
+
+                              <!-- Message Card Overlay -->
+                              <div id="msg-card-overlay" class="absolute inset-0 bg-black/50 z-20 hidden flex items-center justify-center backdrop-blur-sm opacity-0 transition-opacity duration-300">
+                                  <div class="bg-white w-[85%] rounded-2xl shadow-2xl p-6 transform scale-90 transition-transform duration-300" id="msg-card">
+                                      <div class="text-center mb-6">
+                                          <div class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                              <i class="fa-solid fa-bullhorn text-xl"></i>
+                                          </div>
+                                          <h4 class="text-lg font-bold text-slate-800 mb-2">紧急通知</h4>
+                                          <p class="text-slate-600 leading-relaxed">请让队员 <span class="font-bold text-slate-900">张佑才</span> 到 <span class="font-bold text-brand-600">检录口A</span> 就位！</p>
+                                      </div>
+                                      <div class="flex gap-3">
+                                          <button onclick="closeMsgCard()" class="flex-1 py-2.5 bg-slate-100 text-slate-600 rounded-xl font-medium hover:bg-slate-200 transition">关闭</button>
+                                          <button onclick="closeMsgCard()" class="flex-1 py-2.5 bg-brand-600 text-white rounded-xl font-medium hover:bg-brand-700 shadow-lg shadow-brand-500/30 transition">收到</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <h4 class="font-bold text-slate-700">领队 - 消息推送[程序内]</h4>
+                  </div>
+                  
+                  <!-- Phone 6: 领队 - 消息推送[程序外] -->
+                  <div class="flex flex-col items-center gap-4">
+                      <div class="mobile-shell relative overflow-hidden bg-slate-100">
+                          <div class="notch z-50"></div>
+                          
+                          <!-- System Status Bar Simulation -->
+                          <div class="h-8 w-full bg-transparent absolute top-0 z-40 flex justify-between px-6 items-center pt-2">
+                              <span class="text-[10px] font-bold text-slate-900">9:41</span>
+                              <div class="flex gap-1">
+                                  <i class="fa-solid fa-signal text-[10px] text-slate-900"></i>
+                                  <i class="fa-solid fa-wifi text-[10px] text-slate-900"></i>
+                                  <i class="fa-solid fa-battery-full text-[10px] text-slate-900"></i>
+                              </div>
+                          </div>
+
+                          <!-- Top Notification Banner -->
+                          <div id="notification-banner" class="absolute top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-lg z-30 transform -translate-y-full transition-transform duration-500 rounded-b-2xl p-3 pt-10 border-b border-slate-200 cursor-pointer" onclick="openApp()">
+                              <div class="flex gap-3 items-start">
+                                  <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                                      <i class="fa-solid fa-trophy text-white text-lg"></i>
+                                  </div>
+                                  <div class="flex-1 min-w-0">
+                                      <div class="flex justify-between items-baseline mb-0.5">
+                                          <span class="font-bold text-sm text-slate-900">智慧云体育</span>
+                                          <span class="text-[10px] text-slate-400">现在</span>
+                                      </div>
+                                      <p class="text-xs text-slate-600 font-medium truncate">请让队员张佑才到检录口A就位！</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- WeChat List Simulation -->
+                          <div class="h-full pt-12 overflow-y-auto">
+                              <div class="px-4 pb-4 space-y-0">
+                                   <!-- Search Bar -->
+                                   <div class="bg-white rounded-lg p-2 mb-2 flex items-center justify-center text-slate-400 text-xs">
+                                      <i class="fa-solid fa-magnifying-glass mr-1"></i> 搜索
+                                   </div>
+
+                                   <!-- App List Item (Target App) -->
+                                   <div class="bg-white p-3 flex gap-3 active:bg-slate-50 transition border-b border-slate-100" onclick="openApp()">
+                                      <div class="relative">
+                                          <div class="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center text-white text-xl">
+                                              <i class="fa-solid fa-trophy"></i>
+                                          </div>
+                                          <!-- Red Dot Badge -->
+                                          <div id="app-badge" class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center transform scale-0 transition-transform duration-300">
+                                              <span class="text-[8px] text-white font-bold">1</span>
+                                          </div>
+                                      </div>
+                                      <div class="flex-1 min-w-0 flex flex-col justify-center">
+                                          <div class="flex justify-between items-center mb-1">
+                                              <h4 class="text-sm font-medium text-slate-900">智慧云体育</h4>
+                                              <span class="text-[10px] text-slate-400" id="msg-time">昨天</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate" id="msg-preview">点击查看最新赛事信息</p>
+                                      </div>
+                                   </div>
+
+                                   <!-- Other Dummy Items -->
+                                   <div class="bg-white p-3 flex gap-3 border-b border-slate-100">
+                                      <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                          <i class="fa-solid fa-comments"></i>
+                                      </div>
+                                      <div class="flex-1 min-w-0 flex flex-col justify-center">
+                                          <div class="flex justify-between items-center mb-1">
+                                              <h4 class="text-sm font-medium text-slate-900">微信团队</h4>
+                                              <span class="text-[10px] text-slate-400">10:23</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">登录操作通知</p>
+                                      </div>
+                                   </div>
+                                   
+                                   <div class="bg-white p-3 flex gap-3 border-b border-slate-100">
+                                      <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                          <i class="fa-solid fa-bag-shopping"></i>
+                                      </div>
+                                      <div class="flex-1 min-w-0 flex flex-col justify-center">
+                                          <div class="flex justify-between items-center mb-1">
+                                              <h4 class="text-sm font-medium text-slate-900">订阅号消息</h4>
+                                              <span class="text-[10px] text-slate-400">09:15</span>
+                                          </div>
+                                          <p class="text-xs text-slate-400 truncate">3条新消息</p>
+                                      </div>
+                                   </div>
+                              </div>
+                          </div>
+                      </div>
+                      <h4 class="font-bold text-slate-700">领队 - 消息推送[程序外]</h4>
+                  </div>
               </div>
           </div>
 
       </div>
   </main>
 
-  <!-- 3. 抽屉与模态框组件 (Drawers & Modals) -->
+  <!-- Global Simulate Button -->
+    <button onclick="triggerGlobalSimulation()" class="fixed bottom-10 right-10 w-16 h-16 bg-brand-600 rounded-full shadow-2xl shadow-brand-600/50 flex items-center justify-center text-white text-2xl z-[100] hover:scale-110 transition-transform cursor-pointer group">
+        <i class="fa-solid fa-paper-plane group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute -top-10 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">模拟发送消息</span>
+    </button>
+
+    <!-- 3. 抽屉与模态框组件 (Drawers & Modals) -->
 
   <!-- 创建赛事 Drawer -->
   <div id="create-event-drawer" class="fixed inset-0 z-50 hidden">
