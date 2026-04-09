@@ -521,16 +521,49 @@
                   <div class="flex justify-between items-end mb-6">
                       <div>
                           <h1 class="text-2xl font-bold text-slate-800">所有赛事</h1>
-                          <p class="text-slate-500 mt-1">管理您的所有体育竞赛活动</p>
+                          <p class="text-slate-500 mt-1">围绕申报、筹备、执行、复盘的完整赛事生命周期管理</p>
                       </div>
                       <button onclick="toggleDrawer('create-event-drawer')" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-xl shadow-lg shadow-brand-500/30 flex items-center gap-2 transition-all transform hover:scale-105">
                           <i class="fa-solid fa-plus"></i> 创建赛事
                       </button>
                   </div>
 
-                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      <!-- Card 1: 筹备中 -->
+                  <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 mb-6">
+                      <div class="flex flex-wrap gap-3">
+                          <button class="px-4 py-2 rounded-xl bg-brand-600 text-white text-sm font-medium shadow-sm">全部阶段</button>
+                          <button class="px-4 py-2 rounded-xl bg-violet-50 text-violet-700 text-sm font-medium border border-violet-100">申报中</button>
+                          <button class="px-4 py-2 rounded-xl bg-amber-50 text-amber-700 text-sm font-medium border border-amber-100">筹备中</button>
+                          <button class="px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-medium border border-emerald-100">进行中</button>
+                          <button class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 text-sm font-medium border border-slate-200">已结束</button>
+                      </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                      <!-- Card 1: 申报中 -->
                       <div onclick="openEventDetail(1)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-slate-100 cursor-pointer transition-all duration-300 relative overflow-hidden">
+                          <div class="absolute top-0 right-0 w-24 h-24 bg-violet-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                          <span class="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800 mb-4">
+                              <span class="w-1.5 h-1.5 bg-violet-500 rounded-full mr-1.5"></span> 申报中
+                          </span>
+                          <h3 class="relative text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-600 transition-colors">2026 市职工运动会</h3>
+                          <div class="relative space-y-2 text-sm text-slate-500 mb-4">
+                              <p><i class="fa-regular fa-building w-5"></i> 市总工会</p>
+                              <p><i class="fa-solid fa-file-lines w-5"></i> 申报材料 8 / 12</p>
+                              <p><i class="fa-regular fa-clock w-5"></i> 距申报截止 3 天</p>
+                          </div>
+                          <div class="relative bg-violet-50 rounded-xl p-3 border border-violet-100">
+                              <div class="flex justify-between text-xs text-violet-700 mb-2">
+                                  <span>AI 辅助完成度</span>
+                                  <span>67%</span>
+                              </div>
+                              <div class="w-full h-2 bg-violet-100 rounded-full overflow-hidden">
+                                  <div class="h-full w-2/3 bg-violet-500"></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Card 2: 筹备中 -->
+                      <div onclick="openEventDetail(2)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-slate-100 cursor-pointer transition-all duration-300 relative overflow-hidden">
                           <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
                           <span class="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 mb-4">
                               <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1.5"></span> 筹备中
@@ -538,21 +571,17 @@
                           <h3 class="relative text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-600 transition-colors">2026 春季华东师范健美操大赛</h3>
                           <div class="relative space-y-2 text-sm text-slate-500 mb-4">
                               <p><i class="fa-regular fa-building w-5"></i> 科技园工会</p>
-                              <p><i class="fa-solid fa-location-dot w-5"></i> 市体育中心副场</p>
-                              <p><i class="fa-regular fa-calendar w-5"></i> 2025/04/10 - 04/12</p>
+                              <p><i class="fa-solid fa-user-check w-5"></i> 报名审核 248 / 260 人</p>
+                              <p><i class="fa-regular fa-calendar w-5"></i> 2026/04/10 - 04/12</p>
                           </div>
                           <div class="relative pt-4 border-t border-slate-100 flex justify-between items-center">
-                              <div class="flex -space-x-2">
-                                  <img class="w-8 h-8 rounded-full border-2 border-white" src="https://api.dicebear.com/7.x/avataaars/svg?seed=1" alt="">
-                                  <img class="w-8 h-8 rounded-full border-2 border-white" src="https://api.dicebear.com/7.x/avataaars/svg?seed=2" alt="">
-                                  <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs text-slate-500">+12</div>
-                              </div>
+                              <span class="text-xs text-slate-500">筹备任务完成度 78%</span>
                               <span class="text-brand-600 text-sm font-medium group-hover:translate-x-1 transition-transform">管理详情 <i class="fa-solid fa-arrow-right ml-1"></i></span>
                           </div>
                       </div>
 
-                      <!-- Card 2: 进行中 -->
-                      <div onclick="openEventDetail(2)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-slate-100 cursor-pointer transition-all duration-300 relative overflow-hidden">
+                      <!-- Card 3: 进行中 -->
+                      <div onclick="openEventDetail(3)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-slate-100 cursor-pointer transition-all duration-300 relative overflow-hidden">
                           <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
                           <span class="relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 mb-4 animate-pulse">
                               <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1.5"></span> 进行中
@@ -561,26 +590,26 @@
                           <div class="relative space-y-2 text-sm text-slate-500 mb-4">
                               <p><i class="fa-regular fa-building w-5"></i> 街道办事处</p>
                               <p><i class="fa-solid fa-location-dot w-5"></i> 社区公园篮球场</p>
-                              <p><i class="fa-regular fa-calendar w-5"></i> 2025/03/01 - 03/15</p>
+                              <p><i class="fa-solid fa-chart-line w-5"></i> 当前赛程进度 45%</p>
                           </div>
                           <div class="relative pt-4 border-t border-slate-100 flex justify-between items-center">
-                              <div class="text-xs text-slate-500">赛程进度: 45%</div>
                               <div class="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                   <div class="h-full bg-emerald-500 w-[45%]"></div>
                               </div>
+                              <span class="text-brand-600 text-sm font-medium">实时指挥</span>
                           </div>
                       </div>
 
-                      <!-- Card 3: 已结束 -->
-                      <div onclick="openEventDetail(3)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-md border border-slate-100 cursor-pointer transition-all duration-300 opacity-80 hover:opacity-100 relative overflow-hidden">
+                      <!-- Card 4: 已结束 -->
+                      <div onclick="openEventDetail(4)" class="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-md border border-slate-100 cursor-pointer transition-all duration-300 opacity-90 hover:opacity-100 relative overflow-hidden">
                           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600 mb-4">
                               <span class="w-1.5 h-1.5 bg-slate-400 rounded-full mr-1.5"></span> 已结束
                           </span>
                           <h3 class="text-lg font-bold text-slate-800 mb-2">2024 冬季长跑挑战赛</h3>
                           <div class="space-y-2 text-sm text-slate-500 mb-4">
                               <p><i class="fa-regular fa-building w-5"></i> 跑友俱乐部</p>
-                              <p><i class="fa-solid fa-location-dot w-5"></i> 滨江大道</p>
-                              <p><i class="fa-regular fa-calendar w-5"></i> 2024/12/20</p>
+                              <p><i class="fa-solid fa-clipboard-check w-5"></i> 总结报告已生成</p>
+                              <p><i class="fa-solid fa-brain w-5"></i> AI 复盘建议 6 条</p>
                           </div>
                           <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
                               <span class="text-xs text-slate-400">已归档数据</span>
@@ -592,55 +621,360 @@
 
               <!-- 详情视图 (默认隐藏) -->
               <div id="events-detail-view" class="hidden space-y-8 animate-fade-in pb-20">
-                  <!-- 顶部导航 -->
                   <button onclick="closeEventDetail()" class="flex items-center text-sm text-slate-500 hover:text-brand-600 transition mb-4">
                       <i class="fa-solid fa-arrow-left mr-2"></i> 返回赛事列表
                   </button>
 
-                  <!-- Part 1: 基本信息 -->
                   <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative overflow-hidden">
                       <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-50 to-transparent rounded-bl-full opacity-50 pointer-events-none"></div>
-                      <div class="flex justify-between items-start relative">
+                      <div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 relative">
                           <div>
-                              <div class="flex items-center gap-3 mb-2">
-                                  <h1 class="text-3xl font-bold text-slate-800">2026 春季华东师范健美操大赛</h1>
-                                  <span class="px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800">筹备中</span>
+                              <div class="flex flex-wrap items-center gap-3 mb-3">
+                                  <h1 id="event-detail-title" class="text-3xl font-bold text-slate-800">赛事名称</h1>
+                                  <span id="event-detail-stage-badge" class="px-3 py-1 rounded-full text-sm font-medium bg-slate-100 text-slate-700">阶段</span>
                               </div>
-                              <p class="text-slate-500 max-w-2xl">旨在增强企业员工凝聚力，提倡健康生活方式的综合性趣味运动会。</p>
+                              <p id="event-detail-desc" class="text-slate-500 max-w-3xl">赛事描述</p>
                           </div>
                           <div class="flex gap-3">
-                              <button class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm">编辑信息</button>
-                              <button class="px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 text-sm">发布赛事</button>
+                              <button id="event-detail-secondary-action" class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm">编辑信息</button>
+                              <button id="event-detail-primary-action" class="px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 text-sm">主要操作</button>
                           </div>
                       </div>
+
                       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
                           <div class="p-4 bg-slate-50 rounded-xl">
                               <p class="text-xs text-slate-400 uppercase font-bold mb-1">主办方</p>
-                              <p class="font-semibold text-slate-700">科技园工会委员会</p>
+                              <p id="event-detail-sponsor" class="font-semibold text-slate-700">-</p>
                           </div>
                           <div class="p-4 bg-slate-50 rounded-xl">
                               <p class="text-xs text-slate-400 uppercase font-bold mb-1">场馆地点</p>
-                              <p class="font-semibold text-slate-700">市体育中心副场</p>
+                              <p id="event-detail-location" class="font-semibold text-slate-700">-</p>
                           </div>
                           <div class="p-4 bg-slate-50 rounded-xl">
                               <p class="text-xs text-slate-400 uppercase font-bold mb-1">赛事规模</p>
-                              <p class="font-semibold text-slate-700">中型 (200-500人)</p>
+                              <p id="event-detail-scale" class="font-semibold text-slate-700">-</p>
                           </div>
                           <div class="p-4 bg-slate-50 rounded-xl">
                               <p class="text-xs text-slate-400 uppercase font-bold mb-1">时间安排</p>
-                              <p class="font-semibold text-slate-700">2025/04/10 - 04/12</p>
+                              <p id="event-detail-date" class="font-semibold text-slate-700">-</p>
                           </div>
                       </div>
                   </div>
 
-                  <!-- Part 2: 角色管理 -->
-                  <div>
-                      <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                          <i class="fa-solid fa-users text-brand-500"></i> 角色与人员
-                      </h3>
+                  <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                      <div class="flex flex-wrap gap-3" id="event-stage-indicator">
+                          <div data-stage-pill="declaration" class="stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition">1. 申报中</div>
+                          <div data-stage-pill="preparation" class="stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition">2. 筹备中</div>
+                          <div data-stage-pill="active" class="stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition">3. 进行中</div>
+                          <div data-stage-pill="completed" class="stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition">4. 已结束</div>
+                      </div>
+                      <div id="event-detail-stage-note" class="mt-4 text-sm text-slate-500"></div>
+                  </div>
+
+                  <div id="event-detail-kpis" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"></div>
+
+                  <!-- 申报中 -->
+                  <div id="stage-view-declaration" class="event-stage-view hidden space-y-6">
+                      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                          <div class="xl:col-span-2 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-2xl p-6 text-white shadow-lg">
+                              <div class="flex items-start justify-between gap-4 mb-6">
+                                  <div>
+                                      <p class="text-violet-100 text-sm mb-2">AI 申报助手</p>
+                                      <h3 class="text-2xl font-bold mb-2">一键生成申报材料初稿</h3>
+                                      <p class="text-violet-100 max-w-2xl">根据赛事名称、规模、场馆和主办单位，自动生成申请书、活动方案、安全预案、经费预算和通知文案。</p>
+                                  </div>
+                                  <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center text-2xl">
+                                      <i class="fa-solid fa-robot"></i>
+                                  </div>
+                              </div>
+                              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                  <div class="bg-white/10 rounded-xl p-4">
+                                      <p class="text-xs uppercase tracking-wide text-violet-100 mb-1">推荐动作</p>
+                                      <p class="font-semibold">生成完整申报包</p>
+                                  </div>
+                                  <div class="bg-white/10 rounded-xl p-4">
+                                      <p class="text-xs uppercase tracking-wide text-violet-100 mb-1">缺失提醒</p>
+                                      <p class="font-semibold">安全预案未定稿</p>
+                                  </div>
+                                  <div class="bg-white/10 rounded-xl p-4">
+                                      <p class="text-xs uppercase tracking-wide text-violet-100 mb-1">AI 建议</p>
+                                      <p class="font-semibold">补充雨天应急流程</p>
+                                  </div>
+                              </div>
+                              <div class="flex flex-wrap gap-3">
+                                  <button class="px-4 py-2 bg-white text-violet-700 rounded-xl text-sm font-medium shadow-sm">AI 生成申请书</button>
+                                  <button class="px-4 py-2 bg-white/10 border border-white/20 rounded-xl text-sm font-medium">AI 续写安全预案</button>
+                              </div>
+                          </div>
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <h3 class="text-lg font-bold text-slate-800 mb-4">审批流状态</h3>
+                              <div class="space-y-4">
+                                  <div class="flex gap-3">
+                                      <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center"><i class="fa-solid fa-check"></i></div>
+                                      <div>
+                                          <p class="font-medium text-slate-800">赛事立项信息已提交</p>
+                                          <p class="text-sm text-slate-500">今天 09:20 · 赛事运营部</p>
+                                      </div>
+                                  </div>
+                                  <div class="flex gap-3">
+                                      <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center"><i class="fa-solid fa-clock"></i></div>
+                                      <div>
+                                          <p class="font-medium text-slate-800">经费预算待财务确认</p>
+                                          <p class="text-sm text-slate-500">预计今日 18:00 前返回</p>
+                                      </div>
+                                  </div>
+                                  <div class="flex gap-3">
+                                      <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center"><i class="fa-solid fa-file-signature"></i></div>
+                                      <div>
+                                          <p class="font-medium text-slate-800">待主办方盖章</p>
+                                          <p class="text-sm text-slate-500">完成后可进入正式申报</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                          <div class="xl:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex justify-between items-center mb-4">
+                                  <h3 class="text-lg font-bold text-slate-800">材料中心</h3>
+                                  <button class="text-sm font-medium text-violet-700 bg-violet-50 px-3 py-1.5 rounded-lg">从模版新建</button>
+                              </div>
+                              <div class="space-y-3">
+                                  <div class="flex items-center justify-between p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                      <div>
+                                          <p class="font-medium text-slate-800">赛事申请书</p>
+                                          <p class="text-sm text-slate-500">AI 已生成首稿，可继续补充预算与预期成效</p>
+                                      </div>
+                                      <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">已完成</span>
+                                  </div>
+                                  <div class="flex items-center justify-between p-4 rounded-xl border border-slate-100">
+                                      <div>
+                                          <p class="font-medium text-slate-800">活动方案</p>
+                                          <p class="text-sm text-slate-500">已引用去年的模版，待补充本届亮点内容</p>
+                                      </div>
+                                      <span class="px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">待完善</span>
+                                  </div>
+                                  <div class="flex items-center justify-between p-4 rounded-xl border border-slate-100">
+                                      <div>
+                                          <p class="font-medium text-slate-800">安全与医疗预案</p>
+                                          <p class="text-sm text-slate-500">缺少人员疏散路线和极端天气应急说明</p>
+                                      </div>
+                                      <span class="px-3 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-700">待编写</span>
+                                  </div>
+                                  <div class="flex items-center justify-between p-4 rounded-xl border border-slate-100">
+                                      <div>
+                                          <p class="font-medium text-slate-800">经费预算表</p>
+                                          <p class="text-sm text-slate-500">已导入模版，等待财务确认单价与采购方式</p>
+                                      </div>
+                                      <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">审核中</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <h3 class="text-lg font-bold text-slate-800 mb-4">常用模版</h3>
+                              <div class="space-y-3">
+                                  <div class="p-4 rounded-xl bg-violet-50 border border-violet-100">
+                                      <p class="font-medium text-violet-900">市级综合运动会申报包</p>
+                                      <p class="text-sm text-violet-700 mt-1">包含申请书、活动方案、预算和安保预案</p>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                                      <p class="font-medium text-slate-800">校园联赛申报模版</p>
+                                      <p class="text-sm text-slate-500 mt-1">适用于高校院系运动会和邀请赛</p>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                                      <p class="font-medium text-slate-800">企业职工赛事模版</p>
+                                      <p class="text-sm text-slate-500 mt-1">含宣传口径、工会请示和组织方案</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- 筹备中 -->
+                  <div id="stage-view-preparation" class="event-stage-view hidden space-y-6">
+                      <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">报名审核</p>
+                              <p class="text-3xl font-bold text-slate-800">248</p>
+                              <p class="text-sm text-emerald-600 mt-2">已通过 248 人，待审 12 人</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">项目配置</p>
+                              <p class="text-3xl font-bold text-slate-800">18</p>
+                              <p class="text-sm text-slate-500 mt-2">赛事项目已配置，2 个组别待复核</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">赛程草案</p>
+                              <p class="text-3xl font-bold text-slate-800">78%</p>
+                              <p class="text-sm text-slate-500 mt-2">主赛程已排完，冲突检测待确认</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">人员与场馆</p>
+                              <p class="text-3xl font-bold text-slate-800">92%</p>
+                              <p class="text-sm text-slate-500 mt-2">缺 2 名检录志愿者</p>
+                          </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl"><i class="fa-solid fa-user-check"></i></div>
+                                  <button class="text-sm text-brand-600 hover:underline">进入模块</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">报名管理</h3>
+                              <p class="text-sm text-slate-500 mb-4">处理个人/队伍报名、审核、退赛、补录和分组归并。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">待审核报名</span><span class="font-medium">12 条</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">异常资料</span><span class="font-medium">3 条</span></div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"><i class="fa-solid fa-layer-group"></i></div>
+                                  <button class="text-sm text-brand-600 hover:underline">进入模块</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">项目与组别</h3>
+                              <p class="text-sm text-slate-500 mb-4">配置项目规则、年龄分组、报名限制和奖项设置。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">已配置项目</span><span class="font-medium">18 个</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">待发布规则</span><span class="font-medium">2 个</span></div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl"><i class="fa-regular fa-calendar-check"></i></div>
+                                  <button onclick="toggleModal('schedule-modal')" class="text-sm text-brand-600 hover:underline">打开排程</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">赛程编排</h3>
+                              <p class="text-sm text-slate-500 mb-4">支持草案排程、冲突检测、裁判与场地占用校验。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">草案版本</span><span class="font-medium">V3</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">待解决冲突</span><span class="font-medium text-amber-600">4 处</span></div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"><i class="fa-solid fa-users-gear"></i></div>
+                                  <button onclick="openRoleDrawer('referee')" class="text-sm text-brand-600 hover:underline">查看排班</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">人员排班</h3>
+                              <p class="text-sm text-slate-500 mb-4">裁判、志愿者、播报员、医疗与安保岗位统一排班。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">已排班岗位</span><span class="font-medium">46 个</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">空缺岗位</span><span class="font-medium text-rose-600">2 个</span></div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl"><i class="fa-solid fa-route"></i></div>
+                                  <button class="text-sm text-brand-600 hover:underline">查看动线</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">场馆与动线</h3>
+                              <p class="text-sm text-slate-500 mb-4">管理检录区、候场区、领奖区、观众区与车辆流线。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">场地区块</span><span class="font-medium">9 个</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">待确认路线</span><span class="font-medium">1 条</span></div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex items-center justify-between mb-4">
+                                  <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl"><i class="fa-solid fa-bell"></i></div>
+                                  <button class="text-sm text-brand-600 hover:underline">发送通知</button>
+                              </div>
+                              <h3 class="text-lg font-bold text-slate-800 mb-2">通知与物资</h3>
+                              <p class="text-sm text-slate-500 mb-4">统一管理领队通知、物资采购、证件制作和签到物料。</p>
+                              <div class="space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">待发通知</span><span class="font-medium">5 条</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">物资缺口</span><span class="font-medium text-amber-600">号码牌 40 张</span></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                          <div class="xl:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <div class="flex justify-between items-center mb-4">
+                                  <h3 class="text-lg font-bold text-slate-800">筹备风险与待办</h3>
+                                  <span class="text-sm text-slate-500">自动按紧急程度排序</span>
+                              </div>
+                              <div class="space-y-3">
+                                  <div class="p-4 rounded-xl bg-rose-50 border border-rose-100 flex items-start justify-between gap-4">
+                                      <div>
+                                          <p class="font-medium text-rose-900">检录区志愿者仍缺 2 人</p>
+                                          <p class="text-sm text-rose-700 mt-1">建议从后勤组调剂或开启临时招募</p>
+                                      </div>
+                                      <span class="text-xs font-medium text-rose-700 bg-white px-2 py-1 rounded-full">高优先级</span>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-amber-50 border border-amber-100 flex items-start justify-between gap-4">
+                                      <div>
+                                          <p class="font-medium text-amber-900">主馆与副馆热身时间存在 15 分钟冲突</p>
+                                          <p class="text-sm text-amber-700 mt-1">建议 AI 重排热身窗口并同步领队通知</p>
+                                      </div>
+                                      <span class="text-xs font-medium text-amber-700 bg-white px-2 py-1 rounded-full">待处理</span>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-blue-50 border border-blue-100 flex items-start justify-between gap-4">
+                                      <div>
+                                          <p class="font-medium text-blue-900">秩序册封面与 sponsor logo 已更新</p>
+                                          <p class="text-sm text-blue-700 mt-1">可进入最终校对后发布给领队和裁判</p>
+                                      </div>
+                                      <span class="text-xs font-medium text-blue-700 bg-white px-2 py-1 rounded-full">可推进</span>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <h3 class="text-lg font-bold text-slate-800 mb-4">AI 筹备建议</h3>
+                              <div class="space-y-4">
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">建议先发布第一版赛程草案</p>
+                                      <p class="text-sm text-slate-500 mt-1">先收集裁判和领队反馈，再统一调优。</p>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">场馆动线可视化</p>
+                                      <p class="text-sm text-slate-500 mt-1">为检录、候场、领奖三条路线生成示意图。</p>
+                                  </div>
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">自动生成通知包</p>
+                                      <p class="text-sm text-slate-500 mt-1">根据不同角色生成领队、裁判、志愿者三套通知。</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- 进行中 -->
+                  <div id="stage-view-active" class="event-stage-view hidden space-y-6">
+                      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">今日场次</p>
+                              <p class="text-3xl font-bold text-slate-800">36</p>
+                              <p class="text-sm text-emerald-600 mt-2">已完成 16 场</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">实时到场率</p>
+                              <p class="text-3xl font-bold text-slate-800">93%</p>
+                              <p class="text-sm text-slate-500 mt-2">迟到队伍 2 支</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">异常事件</p>
+                              <p class="text-3xl font-bold text-slate-800">3</p>
+                              <p class="text-sm text-amber-600 mt-2">其中 1 条待处理</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">消息推送</p>
+                              <p class="text-3xl font-bold text-slate-800">18</p>
+                              <p class="text-sm text-slate-500 mt-2">本小时已触达 126 人</p>
+                          </div>
+                      </div>
+
                       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <!-- 参赛队伍 -->
-                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                               <div class="flex justify-between items-start mb-4">
                                   <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl">
                                       <i class="fa-solid fa-shirt"></i>
@@ -648,24 +982,13 @@
                                   <button onclick="openRoleDrawer('team')" class="text-sm text-brand-600 hover:underline">查看详情</button>
                               </div>
                               <h4 class="text-lg font-bold text-slate-800">参赛队伍</h4>
-                              <div class="mt-4 space-y-2">
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">已报名队伍</span>
-                                      <span class="font-medium">12 支</span>
-                                  </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">参赛总人数</span>
-                                      <span class="font-medium">248 人</span>
-                                  </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">领队人数</span>
-                                      <span class="font-medium">12 人</span>
-                                  </div>
+                              <div class="mt-4 space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">已到场队伍</span><span class="font-medium">10 / 12</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">待检录选手</span><span class="font-medium">18 人</span></div>
                               </div>
                           </div>
 
-                          <!-- 裁判组 -->
-                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                               <div class="flex justify-between items-start mb-4">
                                   <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-xl">
                                       <i class="fa-solid fa-gavel"></i>
@@ -673,24 +996,13 @@
                                   <button onclick="openRoleDrawer('referee')" class="text-sm text-brand-600 hover:underline">查看详情</button>
                               </div>
                               <h4 class="text-lg font-bold text-slate-800">裁判组</h4>
-                              <div class="mt-4 space-y-2">
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">总裁判长</span>
-                                      <span class="font-medium">张伟</span>
-                                  </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">田径组 (A组)</span>
-                                      <span class="font-medium">8 人</span>
-                                  </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">趣味组 (B组)</span>
-                                      <span class="font-medium">12 人</span>
-                                  </div>
+                              <div class="mt-4 space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">在岗裁判</span><span class="font-medium">18 人</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">轮换中</span><span class="font-medium">2 人</span></div>
                               </div>
                           </div>
 
-                          <!-- 支撑组 -->
-                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition">
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                               <div class="flex justify-between items-start mb-4">
                                   <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl">
                                       <i class="fa-solid fa-headset"></i>
@@ -698,323 +1010,180 @@
                                   <button onclick="openRoleDrawer('support')" class="text-sm text-brand-600 hover:underline">查看详情</button>
                               </div>
                               <h4 class="text-lg font-bold text-slate-800">支撑组</h4>
-                              <div class="mt-4 space-y-2">
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">播报员</span>
-                                      <span class="font-medium">2 人</span>
+                              <div class="mt-4 space-y-2 text-sm">
+                                  <div class="flex justify-between"><span class="text-slate-500">播报与记录</span><span class="font-medium">6 人</span></div>
+                                  <div class="flex justify-between"><span class="text-slate-500">志愿者在线</span><span class="font-medium">19 人</span></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div>
+                          <div class="flex justify-between items-center mb-4">
+                              <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                                  <i class="fa-regular fa-calendar-check text-brand-500"></i> 赛程执行
+                              </h3>
+                              <div class="flex items-center gap-2 ml-auto mr-4 bg-white p-1 rounded-lg border border-slate-200">
+                                  <button onclick="switchScheduleView('list')" id="btn-view-list" class="px-3 py-1.5 text-xs font-medium rounded-md bg-brand-50 text-brand-600 shadow-sm transition-all">
+                                      <i class="fa-solid fa-list mr-1"></i> 列表
+                                  </button>
+                                  <button onclick="switchScheduleView('gantt')" id="btn-view-gantt" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all">
+                                      <i class="fa-solid fa-chart-bar mr-1"></i> 甘特图
+                                  </button>
+                              </div>
+                              <button onclick="toggleModal('schedule-modal')" class="text-sm font-medium text-brand-600 hover:text-brand-700 bg-brand-50 px-3 py-1.5 rounded-lg transition">
+                                  <i class="fa-solid fa-pen-to-square mr-1"></i> 管理赛程
+                              </button>
+                          </div>
+
+                          <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                              <div class="flex border-b border-slate-100">
+                                  <button class="px-6 py-3 text-sm font-medium text-brand-600 border-b-2 border-brand-600 bg-brand-50/50">4月10日 (第一天)</button>
+                                  <button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700">4月11日 (第二天)</button>
+                                  <button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700">4月12日 (第三天)</button>
+                              </div>
+
+                              <div id="schedule-list-view" class="divide-y divide-slate-100 animate-fade-in">
+                                  <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
+                                      <div class="min-w-[80px] text-center pt-1">
+                                          <div class="text-lg font-bold text-slate-800">09:00</div>
+                                          <div class="text-xs text-slate-400">09:45</div>
+                                      </div>
+                                      <div class="w-1 h-auto min-h-[3rem] bg-blue-500 rounded-full self-stretch my-1"></div>
+                                      <div class="flex-1">
+                                          <div class="flex justify-between items-start">
+                                              <div>
+                                                  <h4 class="font-bold text-slate-800">男子单人操 (预赛)</h4>
+                                                  <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
+                                              </div>
+                                              <span class="px-2 py-1 rounded bg-emerald-100 text-xs text-emerald-700 whitespace-nowrap ml-2">进行中</span>
+                                          </div>
+                                          <div class="bg-blue-50/50 rounded-lg p-3 border border-blue-100/50">
+                                              <p class="text-xs font-bold text-blue-800 mb-1.5 flex items-center gap-1">
+                                                  <i class="fa-solid fa-user-tag"></i> 当前检录
+                                              </p>
+                                              <div class="flex flex-wrap gap-2">
+                                                  <span class="px-2 py-1 bg-white border border-blue-100 text-xs text-slate-700 rounded shadow-sm">张伟 (科技园)</span>
+                                                  <span class="px-2 py-1 bg-white border border-blue-100 text-xs text-slate-700 rounded shadow-sm">李强 (街道办)</span>
+                                                  <span class="px-2 py-1 bg-white border border-blue-100 text-xs text-slate-700 rounded shadow-sm">王军 (教育局)</span>
+                                              </div>
+                                          </div>
+                                      </div>
                                   </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">记录员</span>
-                                      <span class="font-medium">4 人</span>
+
+                                  <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
+                                      <div class="min-w-[80px] text-center pt-1">
+                                          <div class="text-lg font-bold text-slate-800">10:30</div>
+                                          <div class="text-xs text-slate-400">11:30</div>
+                                      </div>
+                                      <div class="w-1 h-auto min-h-[3rem] bg-purple-500 rounded-full self-stretch my-1"></div>
+                                      <div class="flex-1">
+                                          <div class="flex justify-between items-start">
+                                              <div>
+                                                  <h4 class="font-bold text-slate-800">混合双人操 & 三人操 (决赛)</h4>
+                                                  <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
+                                              </div>
+                                              <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
+                                          </div>
+                                          <div class="bg-purple-50/50 rounded-lg p-3 border border-purple-100/50">
+                                              <p class="text-xs font-bold text-purple-800 mb-1.5 flex items-center gap-1">
+                                                  <i class="fa-solid fa-users"></i> 参赛组合
+                                              </p>
+                                              <div class="flex flex-wrap gap-2">
+                                                  <span class="px-2 py-1 bg-white border border-purple-100 text-xs text-slate-700 rounded shadow-sm">飞跃组合</span>
+                                                  <span class="px-2 py-1 bg-white border border-purple-100 text-xs text-slate-700 rounded shadow-sm">极光队</span>
+                                                  <span class="px-2 py-1 bg-white border border-purple-100 text-xs text-slate-700 rounded shadow-sm">梦之队</span>
+                                              </div>
+                                          </div>
+                                      </div>
                                   </div>
-                                  <div class="flex justify-between text-sm">
-                                      <span class="text-slate-500">志愿者</span>
-                                      <span class="font-medium">20 人</span>
+                              </div>
+
+                              <div id="schedule-gantt-view" class="hidden p-6 animate-fade-in overflow-x-auto">
+                                  <div class="min-w-[800px]">
+                                      <div class="flex mb-4 text-xs text-slate-400 border-b border-slate-100 pb-2">
+                                          <div class="w-24 flex-shrink-0">场地</div>
+                                          <div class="flex-1 flex justify-between">
+                                              <span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span>
+                                              <span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span><span>18:00</span>
+                                          </div>
+                                      </div>
+                                      <div class="flex items-center mb-6 relative h-16 bg-slate-50 rounded-lg border border-slate-100">
+                                          <div class="w-24 flex-shrink-0 px-2 text-xs font-bold text-slate-600 border-r border-slate-200 h-full flex items-center bg-white rounded-l-lg z-10">
+                                              体育馆<br>主馆 (A区)
+                                          </div>
+                                          <div class="flex-1 relative h-full">
+                                              <div class="absolute inset-0 flex">
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                                  <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
+                                              </div>
+                                              <div class="absolute top-2 bottom-2 bg-blue-100 border border-blue-200 rounded text-blue-700 text-[10px] p-1 overflow-hidden leading-tight" style="left: 10%; width: 7.5%;">男子单人操</div>
+                                              <div class="absolute top-2 bottom-2 bg-purple-100 border border-purple-200 rounded text-purple-700 text-[10px] p-1 overflow-hidden leading-tight" style="left: 25%; width: 10%;">混合双人/三人</div>
+                                              <div class="absolute top-2 bottom-2 bg-orange-100 border border-orange-200 rounded text-orange-700 text-[10px] p-1 overflow-hidden leading-tight" style="left: 60%; width: 15%;">五人操决赛</div>
+                                          </div>
+                                      </div>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
 
-                  <!-- Part 3: 赛程面板 -->
-                  <div>
-                      <div class="flex justify-between items-center mb-4">
-                          <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                              <i class="fa-regular fa-calendar-check text-brand-500"></i> 赛程安排
-                          </h3>
-                          <div class="flex items-center gap-2 ml-auto mr-4 bg-white p-1 rounded-lg border border-slate-200">
-                              <button onclick="switchScheduleView('list')" id="btn-view-list" class="px-3 py-1.5 text-xs font-medium rounded-md bg-brand-50 text-brand-600 shadow-sm transition-all">
-                                  <i class="fa-solid fa-list mr-1"></i> 列表
-                              </button>
-                              <button onclick="switchScheduleView('gantt')" id="btn-view-gantt" class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-50 transition-all">
-                                  <i class="fa-solid fa-chart-bar mr-1"></i> 甘特图
-                              </button>
+                  <!-- 已结束 -->
+                  <div id="stage-view-completed" class="event-stage-view hidden space-y-6">
+                      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">参赛规模</p>
+                              <p class="text-3xl font-bold text-slate-800">1,286</p>
+                              <p class="text-sm text-slate-500 mt-2">完赛率 97.4%</p>
                           </div>
-                          <button onclick="toggleModal('schedule-modal')" class="text-sm font-medium text-brand-600 hover:text-brand-700 bg-brand-50 px-3 py-1.5 rounded-lg transition">
-                              <i class="fa-solid fa-pen-to-square mr-1"></i> 管理赛程
-                          </button>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">观众到场</p>
+                              <p class="text-3xl font-bold text-slate-800">4,820</p>
+                              <p class="text-sm text-slate-500 mt-2">较上届提升 18%</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">预算执行</p>
+                              <p class="text-3xl font-bold text-slate-800">96%</p>
+                              <p class="text-sm text-emerald-600 mt-2">整体在预算内</p>
+                          </div>
+                          <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                              <p class="text-sm text-slate-500 mb-2">AI 复盘项</p>
+                              <p class="text-3xl font-bold text-slate-800">6</p>
+                              <p class="text-sm text-slate-500 mt-2">含 2 条下届优化建议</p>
+                          </div>
                       </div>
-                      
-                      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                          <!-- 日期 Tabs -->
-                          <div class="flex border-b border-slate-100">
-                              <button class="px-6 py-3 text-sm font-medium text-brand-600 border-b-2 border-brand-600 bg-brand-50/50">4月10日 (第一天)</button>
-                              <button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700">4月11日 (第二天)</button>
-                              <button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700">4月12日 (第三天)</button>
-                          </div>
-                          
-                          <!-- 赛程列表 -->
-                          <!-- 赛程列表视图 -->
-                          <div id="schedule-list-view" class="divide-y divide-slate-100 animate-fade-in">
-                              <!-- Item 1 -->
-                              <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
-                                  <div class="min-w-[80px] text-center pt-1">
-                                      <div class="text-lg font-bold text-slate-800">09:00</div>
-                                      <div class="text-xs text-slate-400">09:45</div>
-                                  </div>
-                                  <div class="w-1 h-auto min-h-[3rem] bg-blue-500 rounded-full self-stretch my-1"></div>
-                                  <div class="flex-1">
-                                      <div class="flex justify-between items-start">
-                                          <div>
-                                              <h4 class="font-bold text-slate-800">男子单人操 (预赛)</h4>
-                                              <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
-                                          </div>
-                                          <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
-                                      </div>
-                                      
-                                      <!-- 参赛名单预览 -->
-                                      <div class="bg-blue-50/50 rounded-lg p-3 border border-blue-100/50">
-                                          <p class="text-xs font-bold text-blue-800 mb-1.5 flex items-center gap-1">
-                                              <i class="fa-solid fa-user-tag"></i> 登场选手 (第一组)
-                                          </p>
-                                          <div class="flex flex-wrap gap-2">
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-blue-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">张伟 <span class="text-slate-400 scale-75 inline-block">(科技园)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-blue-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Li" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">李强 <span class="text-slate-400 scale-75 inline-block">(街道办)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-blue-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Wang" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">王军 <span class="text-slate-400 scale-75 inline-block">(教育局)</span></span>
-                                              </div>
-                                              <span class="text-xs text-slate-400 self-center">+21人</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
 
-                              <!-- Item 2 -->
-                              <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
-                                  <div class="min-w-[80px] text-center pt-1">
-                                      <div class="text-lg font-bold text-slate-800">09:30</div>
-                                      <div class="text-xs text-slate-400">10:15</div>
-                                  </div>
-                                  <div class="w-1 h-auto min-h-[3rem] bg-pink-500 rounded-full self-stretch my-1"></div>
-                                  <div class="flex-1">
-                                      <div class="flex justify-between items-start">
-                                          <div>
-                                              <h4 class="font-bold text-slate-800">女子单人操 (预赛)</h4>
-                                              <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 副馆 (B区)</p>
-                                          </div>
-                                          <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
-                                      </div>
-
-                                      <!-- 参赛名单预览 -->
-                                      <div class="bg-pink-50/50 rounded-lg p-3 border border-pink-100/50">
-                                          <p class="text-xs font-bold text-pink-800 mb-1.5 flex items-center gap-1">
-                                              <i class="fa-solid fa-user-tag"></i> 登场选手 (第一组)
-                                          </p>
-                                          <div class="flex flex-wrap gap-2">
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-pink-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chen" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">陈静 <span class="text-slate-400 scale-75 inline-block">(卫生局)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-pink-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Liu" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">刘洋 <span class="text-slate-400 scale-75 inline-block">(科技园)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-pink-100 shadow-sm">
-                                                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zhao" class="w-4 h-4 rounded-full">
-                                                  <span class="text-xs text-slate-700">赵敏 <span class="text-slate-400 scale-75 inline-block">(社区)</span></span>
-                                              </div>
-                                              <span class="text-xs text-slate-400 self-center">+33人</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              
-                              <!-- Item 3 -->
-                              <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
-                                  <div class="min-w-[80px] text-center pt-1">
-                                      <div class="text-lg font-bold text-slate-800">10:30</div>
-                                      <div class="text-xs text-slate-400">11:30</div>
-                                  </div>
-                                  <div class="w-1 h-auto min-h-[3rem] bg-purple-500 rounded-full self-stretch my-1"></div>
-                                  <div class="flex-1">
-                                      <div class="flex justify-between items-start">
-                                          <div>
-                                              <h4 class="font-bold text-slate-800">混合双人操 & 三人操 (决赛)</h4>
-                                              <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
-                                          </div>
-                                          <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
-                                      </div>
-
-                                      <!-- 参赛名单预览 -->
-                                      <div class="bg-purple-50/50 rounded-lg p-3 border border-purple-100/50">
-                                          <p class="text-xs font-bold text-purple-800 mb-1.5 flex items-center gap-1">
-                                              <i class="fa-solid fa-users"></i> 参赛组合
-                                          </p>
-                                          <div class="flex flex-wrap gap-2">
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-purple-100 shadow-sm">
-                                                  <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                                                  <span class="text-xs text-slate-700 font-medium">飞跃组合 <span class="text-slate-400 font-normal">(张/王)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-purple-100 shadow-sm">
-                                                  <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                                                  <span class="text-xs text-slate-700 font-medium">极光队 <span class="text-slate-400 font-normal">(三人)</span></span>
-                                              </div>
-                                              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded border border-purple-100 shadow-sm">
-                                                  <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                                                  <span class="text-xs text-slate-700 font-medium">梦之队 <span class="text-slate-400 font-normal">(三人)</span></span>
-                                              </div>
-                                              <span class="text-xs text-slate-400 self-center">+9组</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <!-- Item 4 -->
-                              <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
-                                  <div class="min-w-[80px] text-center pt-1">
-                                      <div class="text-lg font-bold text-slate-800">14:00</div>
-                                      <div class="text-xs text-slate-400">15:30</div>
-                                  </div>
-                                  <div class="w-1 h-auto min-h-[3rem] bg-orange-500 rounded-full self-stretch my-1"></div>
-                                  <div class="flex-1">
-                                      <div class="flex justify-between items-start">
-                                          <div>
-                                              <h4 class="font-bold text-slate-800">五人操 (决赛)</h4>
-                                              <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
-                                          </div>
-                                          <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
-                                      </div>
-
-                                      <!-- 参赛名单预览 -->
-                                      <div class="bg-orange-50/50 rounded-lg p-3 border border-orange-100/50">
-                                          <p class="text-xs font-bold text-orange-800 mb-1.5 flex items-center gap-1">
-                                              <i class="fa-solid fa-users-rectangle"></i> 参赛队伍
-                                          </p>
-                                          <div class="flex flex-wrap gap-2">
-                                              <span class="px-2 py-1 bg-white border border-orange-200 text-xs text-slate-700 rounded shadow-sm">雄鹰队</span>
-                                              <span class="px-2 py-1 bg-white border border-orange-200 text-xs text-slate-700 rounded shadow-sm">蓝天队</span>
-                                              <span class="px-2 py-1 bg-white border border-orange-200 text-xs text-slate-700 rounded shadow-sm">火焰队</span>
-                                              <span class="px-2 py-1 bg-white border border-orange-200 text-xs text-slate-700 rounded shadow-sm">闪电队</span>
-                                              <span class="text-xs text-slate-400 self-center">+4队</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <!-- Item 5 -->
-                              <div class="p-4 hover:bg-slate-50 transition flex items-start gap-4">
-                                  <div class="min-w-[80px] text-center pt-1">
-                                      <div class="text-lg font-bold text-slate-800">16:00</div>
-                                      <div class="text-xs text-slate-400">17:30</div>
-                                  </div>
-                                  <div class="w-1 h-auto min-h-[3rem] bg-emerald-500 rounded-full self-stretch my-1"></div>
-                                  <div class="flex-1">
-                                      <div class="flex justify-between items-start">
-                                          <div>
-                                              <h4 class="font-bold text-slate-800">有氧舞蹈 & 有氧踏板 (表演赛)</h4>
-                                              <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-location-dot mr-1"></i> 体育馆 主馆 (A区)</p>
-                                          </div>
-                                          <span class="px-2 py-1 rounded bg-slate-100 text-xs text-slate-500 whitespace-nowrap ml-2">未开始</span>
-                                      </div>
-
-                                      <!-- 参赛名单预览 -->
-                                      <div class="bg-emerald-50/50 rounded-lg p-3 border border-emerald-100/50">
-                                          <p class="text-xs font-bold text-emerald-800 mb-1.5 flex items-center gap-1">
-                                              <i class="fa-solid fa-music"></i> 表演团队
-                                          </p>
-                                          <div class="flex flex-wrap gap-2">
-                                              <span class="px-2 py-1 bg-white border border-emerald-200 text-xs text-slate-700 rounded shadow-sm">街道代表队</span>
-                                              <span class="px-2 py-1 bg-white border border-emerald-200 text-xs text-slate-700 rounded shadow-sm">老年大学队</span>
-                                              <span class="px-2 py-1 bg-white border border-emerald-200 text-xs text-slate-700 rounded shadow-sm">企业联队</span>
-                                              <span class="text-xs text-slate-400 self-center">+7队</span>
-                                          </div>
-                                      </div>
-                                  </div>
+                      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                          <div class="xl:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <h3 class="text-lg font-bold text-slate-800 mb-4">赛事总结</h3>
+                              <div class="space-y-4 text-sm text-slate-600 leading-7">
+                                  <p>本届冬季长跑挑战赛整体执行平稳，签到、检录和医疗保障流程均按预案推进。高峰时段入场秩序良好，未出现大规模拥堵。</p>
+                                  <p>AI 统计分析显示，选手到场提醒和领队推送对提升准时到场率有明显帮助，推荐在下届赛事中继续使用分角色消息机制。</p>
+                                  <p>赛后问卷中，参赛体验评分为 4.7 / 5.0，主要改进建议集中在补给点密度和终点摄影服务。</p>
                               </div>
                           </div>
 
-                          <!-- 甘特图视图 -->
-                          <div id="schedule-gantt-view" class="hidden p-6 animate-fade-in overflow-x-auto">
-                              <div class="min-w-[800px]">
-                                  <!-- 时间轴 Header -->
-                                  <div class="flex mb-4 text-xs text-slate-400 border-b border-slate-100 pb-2">
-                                      <div class="w-24 flex-shrink-0">场地</div>
-                                      <div class="flex-1 flex justify-between">
-                                          <span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span>
-                                          <span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span><span>17:00</span><span>18:00</span>
-                                      </div>
+                          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                              <h3 class="text-lg font-bold text-slate-800 mb-4">AI 复盘建议</h3>
+                              <div class="space-y-3">
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">增加北侧补给点</p>
+                                      <p class="text-sm text-slate-500 mt-1">赛后热力图显示该区域停留时间过长。</p>
                                   </div>
-
-                                  <!-- Lane 1: 主馆 -->
-                                  <div class="flex items-center mb-6 relative h-16 bg-slate-50 rounded-lg border border-slate-100">
-                                      <div class="w-24 flex-shrink-0 px-2 text-xs font-bold text-slate-600 border-r border-slate-200 h-full flex items-center bg-white rounded-l-lg z-10">
-                                          体育馆<br>主馆 (A区)
-                                      </div>
-                                      <div class="flex-1 relative h-full">
-                                          <!-- Grid Lines -->
-                                          <div class="absolute inset-0 flex">
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                          </div>
-                                          
-                                          <!-- Events -->
-                                          <!-- Event 1: 09:00 - 09:45 -->
-                                          <div class="absolute top-2 bottom-2 bg-blue-100 border border-blue-200 rounded text-blue-700 text-[10px] p-1 overflow-hidden leading-tight hover:shadow-lg transition cursor-pointer" 
-                                               style="left: 10%; width: 7.5%;">
-                                              男子单人操
-                                          </div>
-
-                                          <!-- Event 3: 10:30 - 11:30 -->
-                                          <div class="absolute top-2 bottom-2 bg-purple-100 border border-purple-200 rounded text-purple-700 text-[10px] p-1 overflow-hidden leading-tight hover:shadow-lg transition cursor-pointer" 
-                                               style="left: 25%; width: 10%;">
-                                              混合双人/三人
-                                          </div>
-
-                                          <!-- Event 4: 14:00 - 15:30 -->
-                                          <div class="absolute top-2 bottom-2 bg-orange-100 border border-orange-200 rounded text-orange-700 text-[10px] p-1 overflow-hidden leading-tight hover:shadow-lg transition cursor-pointer" 
-                                               style="left: 60%; width: 15%;">
-                                              五人操决赛
-                                          </div>
-
-                                          <!-- Event 5: 16:00 - 17:30 -->
-                                          <div class="absolute top-2 bottom-2 bg-emerald-100 border border-emerald-200 rounded text-emerald-700 text-[10px] p-1 overflow-hidden leading-tight hover:shadow-lg transition cursor-pointer" 
-                                               style="left: 80%; width: 15%;">
-                                              有氧舞蹈/踏板
-                                          </div>
-                                      </div>
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">提前 15 分钟二次提醒检录</p>
+                                      <p class="text-sm text-slate-500 mt-1">可进一步降低迟到和漏检录情况。</p>
                                   </div>
-
-                                  <!-- Lane 2: 副馆 -->
-                                  <div class="flex items-center relative h-16 bg-slate-50 rounded-lg border border-slate-100">
-                                      <div class="w-24 flex-shrink-0 px-2 text-xs font-bold text-slate-600 border-r border-slate-200 h-full flex items-center bg-white rounded-l-lg z-10">
-                                          体育馆<br>副馆 (B区)
-                                      </div>
-                                      <div class="flex-1 relative h-full">
-                                          <!-- Grid Lines -->
-                                          <div class="absolute inset-0 flex">
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                              <div class="w-[10%] border-r border-slate-200/50 h-full"></div>
-                                          </div>
-
-                                          <!-- Event 2: 09:30 - 10:15 -->
-                                          <div class="absolute top-2 bottom-2 bg-pink-100 border border-pink-200 rounded text-pink-700 text-[10px] p-1 overflow-hidden leading-tight hover:shadow-lg transition cursor-pointer" 
-                                               style="left: 15%; width: 7.5%;">
-                                              女子单人操
-                                          </div>
-                                      </div>
+                                  <div class="p-4 rounded-xl bg-slate-50">
+                                      <p class="font-medium text-slate-800">复用本届申报模版</p>
+                                      <p class="text-sm text-slate-500 mt-1">已自动标记为下届可复用基础材料。</p>
                                   </div>
                               </div>
                           </div>
@@ -1634,11 +1803,157 @@
           });
       }
 
+      const eventStageStyleMap = {
+          declaration: {
+              badge: 'bg-violet-100 text-violet-800',
+              pill: 'bg-violet-50 border-violet-200 text-violet-700'
+          },
+          preparation: {
+              badge: 'bg-amber-100 text-amber-800',
+              pill: 'bg-amber-50 border-amber-200 text-amber-700'
+          },
+          active: {
+              badge: 'bg-emerald-100 text-emerald-800',
+              pill: 'bg-emerald-50 border-emerald-200 text-emerald-700'
+          },
+          completed: {
+              badge: 'bg-slate-100 text-slate-700',
+              pill: 'bg-slate-100 border-slate-200 text-slate-600'
+          }
+      };
+
+      const eventDetailData = {
+          1: {
+              title: '2026 市职工运动会',
+              stage: 'declaration',
+              stageLabel: '申报中',
+              desc: '当前处于赛事立项与申报阶段，重点完成申请书、活动方案、预算、安全预案及审批流提交。',
+              sponsor: '市总工会',
+              location: '待确定主场馆',
+              scale: '大型 (1000 人以上)',
+              date: '拟定 2026/05/18 - 05/20',
+              note: '申报阶段建议优先把材料、审批和 AI 辅助写作放在首页，暂不强调赛程与现场执行。',
+              primaryAction: '提交申报',
+              secondaryAction: '编辑材料',
+              kpis: [
+                  { label: '材料完成度', value: '8 / 12', subtext: '安全预案和预算待完善' },
+                  { label: '审批进度', value: '67%', subtext: '财务与主办方待确认' },
+                  { label: 'AI 草稿数', value: '6', subtext: '已生成申请书等 6 份' },
+                  { label: '剩余时间', value: '3 天', subtext: '距离申报截止日' }
+              ]
+          },
+          2: {
+              title: '2026 春季华东师范健美操大赛',
+              stage: 'preparation',
+              stageLabel: '筹备中',
+              desc: '赛事已通过立项，当前聚焦报名审核、项目配置、赛程草案、人员排班及场馆动线设计。',
+              sponsor: '科技园工会委员会',
+              location: '市体育中心副场',
+              scale: '中型 (200-500 人)',
+              date: '2026/04/10 - 04/12',
+              note: '筹备阶段建议以报名、项目、赛程、人员场馆四大模块组织页面，帮助管理者从静态展示进入任务推进。',
+              primaryAction: '发布秩序册',
+              secondaryAction: '编辑筹备计划',
+              kpis: [
+                  { label: '报名审核', value: '248 / 260', subtext: '待审核 12 人' },
+                  { label: '赛程草案', value: '78%', subtext: '4 处冲突待处理' },
+                  { label: '岗位排班', value: '46 / 48', subtext: '缺 2 名志愿者' },
+                  { label: '筹备完成度', value: '78%', subtext: '可进入发布前校对' }
+              ]
+          },
+          3: {
+              title: '第十届社区篮球联赛',
+              stage: 'active',
+              stageLabel: '进行中',
+              desc: '赛事正处于现场执行阶段，重点关注赛程执行、到场状态、实时指挥、成绩与消息推送。',
+              sponsor: '街道办事处',
+              location: '社区公园篮球场',
+              scale: '中型 (300 人)',
+              date: '2025/03/01 - 03/15',
+              note: '进行中以实时指挥为核心，赛程、检录、消息通知和统计大屏是最优先的操作区域。',
+              primaryAction: '打开大屏',
+              secondaryAction: '调整赛程',
+              kpis: [
+                  { label: '赛程进度', value: '45%', subtext: '已完成 16 / 36 场' },
+                  { label: '实时到场率', value: '93%', subtext: '迟到队伍 2 支' },
+                  { label: '异常事件', value: '3', subtext: '1 条待处理' },
+                  { label: '推送消息', value: '18', subtext: '本小时触达 126 人' }
+              ]
+          },
+          4: {
+              title: '2024 冬季长跑挑战赛',
+              stage: 'completed',
+              stageLabel: '已结束',
+              desc: '赛事已完赛并归档，当前重点是总结复盘、预算核算、资料沉淀以及 AI 数据分析。',
+              sponsor: '跑友俱乐部',
+              location: '滨江大道',
+              scale: '大型 (1286 人)',
+              date: '2024/12/20',
+              note: '已结束阶段应突出总结报告、数据分析和下届可复用资产，而不是继续展示赛时管理内容。',
+              primaryAction: '生成总结',
+              secondaryAction: '查看归档',
+              kpis: [
+                  { label: '参赛规模', value: '1,286', subtext: '完赛率 97.4%' },
+                  { label: '预算执行', value: '96%', subtext: '整体在预算内' },
+                  { label: '满意度', value: '4.7 / 5', subtext: '赛后问卷评分' },
+                  { label: 'AI 复盘项', value: '6', subtext: '含 2 条下届建议' }
+              ]
+          }
+      };
+
+      function renderEventDetail(id) {
+          const data = eventDetailData[id];
+          if (!data) return;
+
+          const stageStyle = eventStageStyleMap[data.stage];
+          const badge = document.getElementById('event-detail-stage-badge');
+
+          document.getElementById('event-detail-title').innerText = data.title;
+          badge.className = `px-3 py-1 rounded-full text-sm font-medium ${stageStyle.badge}`;
+          badge.innerText = data.stageLabel;
+          document.getElementById('event-detail-desc').innerText = data.desc;
+          document.getElementById('event-detail-sponsor').innerText = data.sponsor;
+          document.getElementById('event-detail-location').innerText = data.location;
+          document.getElementById('event-detail-scale').innerText = data.scale;
+          document.getElementById('event-detail-date').innerText = data.date;
+          document.getElementById('event-detail-stage-note').innerText = data.note;
+          document.getElementById('event-detail-primary-action').innerText = data.primaryAction;
+          document.getElementById('event-detail-secondary-action').innerText = data.secondaryAction;
+
+          const kpiContainer = document.getElementById('event-detail-kpis');
+          kpiContainer.innerHTML = data.kpis.map(item => `
+              <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                  <p class="text-sm text-slate-500 mb-2">${item.label}</p>
+                  <p class="text-3xl font-bold text-slate-800">${item.value}</p>
+                  <p class="text-sm text-slate-500 mt-2">${item.subtext}</p>
+              </div>
+          `).join('');
+
+          document.querySelectorAll('.event-stage-view').forEach(view => view.classList.add('hidden'));
+          const currentStageView = document.getElementById(`stage-view-${data.stage}`);
+          if (currentStageView) {
+              currentStageView.classList.remove('hidden');
+          }
+
+          document.querySelectorAll('[data-stage-pill]').forEach(pill => {
+              pill.className = 'stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition border-slate-200 text-slate-400 bg-white';
+          });
+
+          const activePill = document.querySelector(`[data-stage-pill="${data.stage}"]`);
+          if (activePill) {
+              activePill.className = `stage-pill px-4 py-2 rounded-xl border text-sm font-medium transition ${stageStyle.pill}`;
+          }
+
+          if (data.stage === 'active') {
+              switchScheduleView('list');
+          }
+      }
+
       // 进入赛事详情页
       function openEventDetail(id) {
+          renderEventDetail(id);
           document.getElementById('events-list-view').classList.add('hidden');
           document.getElementById('events-detail-view').classList.remove('hidden');
-          // 重置滚动条位置
           document.getElementById('main-scroll').scrollTop = 0;
           document.getElementById('page-title').innerText = '赛事详情';
       }
